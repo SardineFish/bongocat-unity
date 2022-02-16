@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using SardineFish.Utils;
 
 public class TransparentWindowManager : SingletonMonoBehaviour<TransparentWindowManager>
 {
