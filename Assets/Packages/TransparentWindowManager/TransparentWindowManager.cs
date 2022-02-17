@@ -4,6 +4,16 @@ using SardineFish.Utils;
 
 public class TransparentWindowManager : SingletonMonoBehaviour<TransparentWindowManager>
 {
+    public bool transparent = false;
+    public bool borderless = false;
+    public bool clickThrough = false;
+    public bool topMost = false;
+
+    private bool _internalTransparent = false;
+    private bool _internalBorderless = false;
+    private bool _internalClickThrough = false;
+    private bool _internalTopMost = false;
+    
     #region Enum
 
     internal enum WindowCompositionAttribute
@@ -56,9 +66,19 @@ public class TransparentWindowManager : SingletonMonoBehaviour<TransparentWindow
 
     [DllImport("user32.dll")]
     private static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+    
+    [DllImport("user32.dll")]
+    private static extern int SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint uFlags);
+
+    [DllImport("user32.dll")]
+    private static extern int SetLayeredWindowAttributes(IntPtr hWnd, uint crKey, byte bAlpha, uint dwFlags);
 
     [DllImport("Dwmapi.dll")]
     private static extern uint DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS margins);
+    
+    [DllImport("user32.dll")]
+    internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+    
 
     #endregion DLL Import
 
@@ -69,43 +89,60 @@ public class TransparentWindowManager : SingletonMonoBehaviour<TransparentWindow
 
     protected virtual void Start()
     {
-        #if !UNITY_EDITOR && UNITY_STANDALONE_WIN
+        UpdateWindow();
+    }
 
+    private void Update()
+    {
+        if (_internalBorderless != borderless || _internalTransparent != transparent || clickThrough != _internalClickThrough)
+        {
+            UpdateWindow();
+        }
+    }
+
+    private void UpdateWindow()
+    {
+#if !UNITY_EDITOR && UNITY_STANDALONE_WIN
+
+
+        const int GWL_EXSTYLE = -20;
+        const uint WS_EX_LAYERD = 0x080000;
+        const uint WS_EX_TRANSPARENT = 0x00000020;
+        const uint WS_EX_LEFT = 0x00000000;
+        const uint WS_EX_NOREDIRECTIONBITMAP = 0x00200000;  
+        
         const int  GWL_STYLE = -16;
         const uint WS_POPUP = 0x80000000;
         const uint WS_VISIBLE = 0x10000000;
+        
+        const uint LWA_ALPHA = 0x00000002;
+        const uint LWA_COLORKEY = 0x00000001;
 
-        // NOTE:
-        // https://msdn.microsoft.com/ja-jp/library/cc410861.aspx
-
+        const long HWND_TOPMOST = -1;
+        const uint SWP_NOMOVE = 0x0002;
+        const uint SWP_NOSIZE = 0x0001;
+        
         var windowHandle = GetActiveWindow();
-
-        // NOTE:
-        // https://msdn.microsoft.com/ja-jp/library/cc411203.aspx
-        // 
-        // "SetWindowLong" is used to update window parameter.
-        // The arguments shows (target, parameter, value).
-
-        SetWindowLong(windowHandle, GWL_STYLE, WS_POPUP | WS_VISIBLE);
-
-        // NOTE:
-        // https://msdn.microsoft.com/ja-jp/library/windows/desktop/aa969512(v=vs.85).aspx
-        // https://msdn.microsoft.com/ja-jp/library/windows/desktop/bb773244(v=vs.85).aspx
-        // 
-        // DwmExtendFrameIntoClientArea will spread the effects
-        // which attached to window frame to contents area.
-        // So if the frame is transparent, the contents area gets also transparent.
-        // MARGINS is structure to set the spread range.
-        // When set -1 to MARGIN, it means spread range is all of the contents area.
-
+        
         MARGINS margins = new MARGINS()
         {
             cxLeftWidth = -1
         };
-
+        
         DwmExtendFrameIntoClientArea(windowHandle, ref margins);
+        uint flag = 0;
+        if (transparent)
+            flag |= WS_EX_LAYERD;
+        if (clickThrough)
+            flag |= WS_EX_TRANSPARENT;
+        SetWindowLong(windowHandle, GWL_EXSTYLE, flag);
 
-        #endif // !UNITY_EDITOR && UNITY_STANDALONE_WIN
+        SetWindowPos(windowHandle, (IntPtr)HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+
+        _internalBorderless = borderless;
+        _internalTransparent = transparent;
+        _internalClickThrough = clickThrough;
+#endif // !UNITY_EDITOR && UNITY_STANDALONE_WIN
     }
 
     #endregion Method

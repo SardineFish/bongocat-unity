@@ -1,44 +1,41 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace BongoCatUnity
 {
     public class HandController : MonoBehaviour
     {
-        [SerializeField]
-        private HandPositionController leftHandUpCtrl;
-
-        [SerializeField]
-        private HandPositionController leftHandDownCtrl;
         
         [SerializeField]
-        private HandPositionController rightHandUpCtrl;
+        private HandPositionController HandUpCtrl;
 
         [SerializeField]
-        private HandPositionController rightHandDownCtrl;
+        private HandPositionController HandDownCtrl;
 
-        public bool leftHandDown = false;
+        public bool handDown = false;
 
-        public bool rightHandDown = false;
+        public Vector2 handPos;
 
-        private void Update()
+        private void Awake()
         {
-            leftHandDown = false;
-            rightHandDown = false;
-            if (Input.GetKey(KeyCode.Z))
+            handPos = HandDownCtrl.Position;
+        }
+
+        private void LateUpdate()
+        {
+            HandDownCtrl.gameObject.SetActive(handDown);
+            HandUpCtrl.gameObject.SetActive(!handDown);
+            
+            if (handDown)
             {
-                leftHandDown = true;
+                HandDownCtrl.Position = handPos;
             }
-
-            if (Input.GetKey(KeyCode.X))
-                rightHandDown = true;
-
+            else
+            {
+                HandUpCtrl.Position = handPos;
+            }
             
-            leftHandDownCtrl.gameObject.SetActive(leftHandDown);
-            leftHandUpCtrl.gameObject.SetActive(!leftHandDown);
-            
-            rightHandDownCtrl.gameObject.SetActive(rightHandDown);
-            rightHandUpCtrl.gameObject.SetActive(!rightHandDown);
+            handDown = false;
         }
     }
 }
