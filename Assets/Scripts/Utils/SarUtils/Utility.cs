@@ -895,6 +895,23 @@ namespace SardineFish.Utils
 
             Debug.DrawLine(previous, first, color);
         }
+        
+        
+        public static void DebugDrawRect(Rect rect, Color color, float z = 0)
+        {
+            Debug.DrawLine(new Vector3(rect.xMin, rect.yMin, z), new Vector3(rect.xMax, rect.yMin, z), color);
+            Debug.DrawLine(new Vector3(rect.xMin, rect.yMin, z), new Vector3(rect.xMin, rect.yMax, z), color);
+            Debug.DrawLine(new Vector3(rect.xMax, rect.yMax, z), new Vector3(rect.xMin, rect.yMax, z), color);
+            Debug.DrawLine(new Vector3(rect.xMax, rect.yMax, z), new Vector3(rect.xMax, rect.yMin, z), color);
+        }
+        
+        public static void DebugDrawRect(Rect rect, Color color, Matrix4x4 transform)
+        {
+            Debug.DrawLine(transform.MultiplyPoint(new Vector3(rect.xMin, rect.yMin, 0)),  transform.MultiplyPoint(new Vector3(rect.xMax, rect.yMin, 0)), color);
+            Debug.DrawLine(transform.MultiplyPoint(new Vector3(rect.xMin, rect.yMin, 0)),  transform.MultiplyPoint(new Vector3(rect.xMin, rect.yMax, 0)), color);
+            Debug.DrawLine(transform.MultiplyPoint(new Vector3(rect.xMax, rect.yMax, 0)),  transform.MultiplyPoint(new Vector3(rect.xMin, rect.yMax, 0)), color);
+            Debug.DrawLine(transform.MultiplyPoint(new Vector3(rect.xMax, rect.yMax, 0)),  transform.MultiplyPoint(new Vector3(rect.xMax, rect.yMin, 0)), color);
+        }
 
         public static void DebugDrawSector(Vector2 center, float radius, float fromRad, float toRad, Color color,
             int subdivide = 12)

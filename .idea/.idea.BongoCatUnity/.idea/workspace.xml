@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="44577427-039e-4940-84c3-d7392d40cd0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BongoCatUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BongoCatUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/TransparentWindowManager/TransparentWindowManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/TransparentWindowManager/TransparentWindowManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HandController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HandController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HandPositionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HandPositionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputRegion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputRegion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/SarUtils/Utility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/SarUtils/Utility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +24,10 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Controls/StickControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Editor/PropertyDrawers/InputControlPathDrawer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Controls/InputControlAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Controls/Vector2Control.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Controls/InputControlPath.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Editor/ControlPicker/InputControlPathEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.2.0/InputSystem/Controls/InputControl.cs" root0="SKIP_HIGHLIGHTING" />
@@ -41,10 +36,12 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/Utils/SarUtils/SingletonMonobehavour.cs" />
       <option value="$PROJECT_DIR$/Assets/Packages/TransparentWindowManager/TransparentWindowManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Manipulator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/HandPositionController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HandController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Button.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/HandPositionController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Manipulator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utils/SarUtils/Utility.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/InputRegion.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="25CH7aQ9RhkXuXnc5VPikwbrvoR" />
