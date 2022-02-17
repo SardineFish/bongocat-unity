@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44577427-039e-4940-84c3-d7392d40cd0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BongoCatUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BongoCatUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputRegion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputRegion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/SarUtils/Utility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/SarUtils/Utility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
